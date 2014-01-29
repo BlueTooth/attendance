@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  mo_start: 2013-07-02 15:25:32
+  mo_end: 2013-07-02 15:25:32
+  tu_start: 2013-07-02 15:25:32
+  tu_end: 2013-07-02 15:25:32
+  we_start: 2013-07-02 15:25:32
+  we_end: 2013-07-02 15:25:32
+  th_start: 2013-07-02 15:25:32
+  th_end: 2013-07-02 15:25:32
+  fr_start: 2013-07-02 15:25:32
+  fr_end: 2013-07-02 15:25:32
+
+two:
+  name: MyString
+  mo_start: 2013-07-02 15:25:32
+  mo_end: 2013-07-02 15:25:32
+  tu_start: 2013-07-02 15:25:32
+  tu_end: 2013-07-02 15:25:32
+  we_start: 2013-07-02 15:25:32
+  we_end: 2013-07-02 15:25:32
+  th_start: 2013-07-02 15:25:32
+  th_end: 2013-07-02 15:25:32
+  fr_start: 2013-07-02 15:25:32
+  fr_end: 2013-07-02 15:25:32

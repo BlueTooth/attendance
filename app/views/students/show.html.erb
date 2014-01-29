@@ -1,0 +1,86 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @student.name %>
+</p>
+
+<p>
+  <b>Farbe:</b>
+  <span style="color:white;background-color:<%= @student.color %>;">&nbsp;&nbsp;<%= @student.color %>&nbsp;&nbsp;</span>
+</br>
+
+<p>
+  <b>Gerade Woche</b>
+</p>
+
+<p>
+  <b>Montag:</b>
+  <%= @student.mo_even_start.strftime("%H:%M") %> - <%= @student.mo_even_end.strftime("%H:%M") %>
+</p>
+
+<p>
+  <b>Dienstag:</b>
+  <%= @student.tu_even_start.strftime("%H:%M") %> - <%= @student.tu_even_end.strftime("%H:%M") %>
+</p>
+
+<p>
+  <b>Mittwoch:</b>
+  <%= @student.we_even_start.strftime("%H:%M") %> - <%= @student.we_even_end.strftime("%H:%M") %>
+</p>
+
+<p>
+  <b>Donnerstag:</b>
+  <%= @student.th_even_start.strftime("%H:%M") %> - <%= @student.th_even_end.strftime("%H:%M") %>
+</p>
+
+<p>
+  <b>Freitag:</b>
+  <%= @student.fr_even_start.strftime("%H:%M") %> - <%= @student.fr_even_end.strftime("%H:%M") %>
+</p>
+
+</br>
+
+<p>
+  <b>Ungerade Woche</b>
+</p>
+
+<p>
+  <b>Montag:</b>
+  <%= @student.mo_start.strftime("%H:%M") %> - <%= @student.mo_end.strftime("%H:%M") %>
+</p>
+
+<p>
+  <b>Dienstag:</b>
+  <%= @student.tu_start.strftime("%H:%M") %> - <%= @student.tu_end.strftime("%H:%M") %>
+</p>
+
+<p>
+  <b>Mittwoch:</b>
+  <%= @student.we_start.strftime("%H:%M") %> - <%= @student.we_end.strftime("%H:%M") %>
+</p>
+
+<p>
+  <b>Donnerstag:</b>
+  <%= @student.th_start.strftime("%H:%M") %> - <%= @student.th_end.strftime("%H:%M") %>
+</p>
+
+<p>
+  <b>Freitag:</b>
+  <%= @student.fr_start.strftime("%H:%M") %> - <%= @student.fr_end.strftime("%H:%M") %>
+</p>
+
+</br>
+
+<p>
+  <b>Pause:</b>
+  <%= @student.pause ? "Ja" : "Nein" %>
+</p>
+
+<p>
+  <b>Kommentar:</b>
+  <%= @student.comment %>
+</p>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

@@ -1,0 +1,103 @@
+<center>
+<h1>Online Studenten Anwesenheit</h1>
+
+<table border="1" cellspacing="0" cellpadding="0" frame="void" width="50%">
+  <tr>
+    <th>Uhrzeit</th>
+    <th width="18%" colspan="<%= @students.count*2 %>">Montag</th>
+    <th width="18%" colspan="<%= @students.count*2 %>">Dienstag</th>
+    <th width="18%" colspan="<%= @students.count*2 %>">Mittwoch</th>
+    <th width="18%" colspan="<%= @students.count*2 %>">Donnerstag</th>
+    <th width="18%" colspan="<%= @students.count*2 %>">Freitag</th>
+  </tr>
+<% for i in 6..19 do %>
+  <tr align="center">
+    <td rowspan="2"><%= i %>:00</td>
+  <% @students.each do |student| %>
+    <td bgcolor="<%= (Time.utc(2000, 1, 1, i).between?(student.mo_even_start, student.mo_even_end-1) and !(student.pause and i == 12)) ? student.color : '' %>">&nbsp;&nbsp;</td>
+    <td bgcolor="<%= (Time.utc(2000, 1, 1, i).between?(student.mo_start, student.mo_end-1) and !(student.pause and i == 12)) ? student.color : '' %>"><font color="FFFFFF">#</font></td>
+  <% end %>
+  <% @students.each do |student| %>
+    <td bgcolor="<%= (Time.utc(2000, 1, 1, i).between?(student.tu_even_start, student.tu_even_end-1) and !(student.pause and i == 12)) ? student.color : '' %>">&nbsp;&nbsp;</td>
+    <td bgcolor="<%= (Time.utc(2000, 1, 1, i).between?(student.tu_start, student.tu_end-1) and !(student.pause and i == 12)) ? student.color : '' %>"><font color="FFFFFF">#</font></td>
+  <% end %>
+  <% @students.each do |student| %>
+    <td bgcolor="<%= (Time.utc(2000, 1, 1, i).between?(student.we_even_start, student.we_even_end-1) and !(student.pause and i == 12)) ? student.color : '' %>">&nbsp;&nbsp;</td>
+    <td bgcolor="<%= (Time.utc(2000, 1, 1, i).between?(student.we_start, student.we_end-1) and !(student.pause and i == 12)) ? student.color : '' %>"><font color="FFFFFF">#</font></td>
+  <% end %>
+  <% @students.each do |student| %>
+    <td bgcolor="<%= (Time.utc(2000, 1, 1, i).between?(student.th_even_start, student.th_even_end-1) and !(student.pause and i == 12)) ? student.color : '' %>">&nbsp;&nbsp;</td>
+    <td bgcolor="<%= (Time.utc(2000, 1, 1, i).between?(student.th_start, student.th_end-1) and !(student.pause and i == 12)) ? student.color : '' %>"><font color="FFFFFF">#</font></td>
+  <% end %>
+  <% @students.each do |student| %>
+    <td bgcolor="<%= (Time.utc(2000, 1, 1, i).between?(student.fr_even_start, student.fr_even_end-1) and !(student.pause and i == 12)) ? student.color : '' %>">&nbsp;&nbsp;</td>
+    <td bgcolor="<%= (Time.utc(2000, 1, 1, i).between?(student.fr_start, student.fr_end-1) and !(student.pause and i == 12)) ? student.color : '' %>"><font color="FFFFFF">#</font></td>
+  <% end %>
+  </tr>
+  <tr align="center">
+  <% @students.each do |student| %>
+    <td bgcolor="<%= Time.utc(2000, 1, 1, i, 30).between?(student.mo_even_start, student.mo_even_end-1) ? student.color : '' %>">&nbsp;&nbsp;</td>
+    <td bgcolor="<%= Time.utc(2000, 1, 1, i, 30).between?(student.mo_start, student.mo_end-1) ? student.color : '' %>"><font color="FFFFFF">#</font></td>
+  <% end %>
+  <% @students.each do |student| %>
+    <td bgcolor="<%= Time.utc(2000, 1, 1, i, 30).between?(student.tu_even_start, student.tu_even_end-1) ? student.color : '' %>">&nbsp;&nbsp;</td>
+    <td bgcolor="<%= Time.utc(2000, 1, 1, i, 30).between?(student.tu_start, student.tu_end-1) ? student.color : '' %>"><font color="FFFFFF">#</font></td>
+  <% end %>
+  <% @students.each do |student| %>
+    <td bgcolor="<%= Time.utc(2000, 1, 1, i, 30).between?(student.we_even_start, student.we_even_end-1) ? student.color : '' %>">&nbsp;&nbsp;</td>
+    <td bgcolor="<%= Time.utc(2000, 1, 1, i, 30).between?(student.we_start, student.we_end-1) ? student.color : '' %>"><font color="FFFFFF">#</font></td>
+  <% end %>
+  <% @students.each do |student| %>
+    <td bgcolor="<%= Time.utc(2000, 1, 1, i, 30).between?(student.th_even_start, student.th_even_end-1) ? student.color : '' %>">&nbsp;&nbsp;</td>
+    <td bgcolor="<%= Time.utc(2000, 1, 1, i, 30).between?(student.th_start, student.th_end-1) ? student.color : '' %>"><font color="FFFFFF">#</font></td>
+  <% end %>
+  <% @students.each do |student| %>
+    <td bgcolor="<%= Time.utc(2000, 1, 1, i, 30).between?(student.fr_even_start, student.fr_even_end-1) ? student.color : '' %>">&nbsp;&nbsp;</td>
+    <td bgcolor="<%= Time.utc(2000, 1, 1, i, 30).between?(student.fr_start, student.fr_end-1) ? student.color : '' %>"><font color="FFFFFF">#</font></td>
+  <% end %>
+  </tr>
+
+<% end %>
+</table>
+<table border="1" cellspacing="0" cellpadding="2">
+  <tr>
+    <td bgcolor="black">&nbsp;&nbsp;</td>
+    <td>Gerade Woche</td>
+  </tr>
+  <tr>
+    <td bgcolor="black"><font color="FFFFFF">#</font></td>
+    <td>Ungerade Woche</td>
+  </tr>
+</table>
+
+<br />
+
+<table>
+  <tr>
+    <th></th>
+    <th>Studentenname:</th>
+    <th>Stunden:</th>
+    <th>Kommentar:</th>
+    <th>Ge&auml;ndert am:</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @students.each do |student| %>
+  <tr>
+    <td bgcolor="<%= student.color %>">&nbsp;&nbsp;</td>
+    <td><b><%= student.name %></b></td>
+    <td><center><%= (((student.mo_even_end-student.mo_even_start)+(student.tu_even_end-student.tu_even_start)+(student.we_even_end-student.we_even_start)+(student.th_even_end-student.th_even_start)+(student.fr_even_end-student.fr_even_start)-((student.pause and Time.utc(2000, 1, 1, 12, 0).between?(student.mo_even_start, student.mo_even_end-1)) ? 1800 : 0)-((student.pause and Time.utc(2000, 1, 1, 12, 0).between?(student.tu_even_start, student.tu_even_end-1)) ? 1800 : 0)-((student.pause and Time.utc(2000, 1, 1, 12, 0).between?(student.we_even_start, student.we_even_end-1)) ? 1800 : 0)-((student.pause and Time.utc(2000, 1, 1, 12, 0).between?(student.th_even_start, student.th_even_end-1)) ? 1800 : 0)-((student.pause and Time.utc(2000, 1, 1, 12, 0).between?(student.fr_even_start, student.fr_even_end-1)) ? 1800 : 0) ) + ((student.mo_end-student.mo_start)+(student.tu_end-student.tu_start)+(student.we_end-student.we_start)+(student.th_end-student.th_start)+(student.fr_end-student.fr_start)-((student.pause and Time.utc(2000, 1, 1, 12, 0).between?(student.mo_start, student.mo_end-1)) ? 1800 : 0)-((student.pause and Time.utc(2000, 1, 1, 12, 0).between?(student.tu_start, student.tu_end-1)) ? 1800 : 0)-((student.pause and Time.utc(2000, 1, 1, 12, 0).between?(student.we_start, student.we_end-1)) ? 1800 : 0)-((student.pause and Time.utc(2000, 1, 1, 12, 0).between?(student.th_start, student.th_end-1)) ? 1800 : 0)-((student.pause and Time.utc(2000, 1, 1, 12, 0).between?(student.fr_start, student.fr_end-1)) ? 1800 : 0) ) ) /7200 %></center></td>
+    <td><%= student.comment %></td>
+    <td><center><%= student.updated_at.strftime("%d.%m.%Y") %></center></td>
+    <td><%= link_to 'Show', student %></td>
+    <td><%= link_to 'Edit', edit_student_path(student) %></td>
+    <td><%= link_to 'Destroy', student, :method => :delete, :data => { :confirm => 'Klicken Sie "OK", wenn der Student nicht mehr bei Wincor-Nixdorf arbeitet?' } %></td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Student', new_student_path %>
+</center>
