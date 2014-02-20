@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116090849) do
+ActiveRecord::Schema.define(:version => 20140220095625) do
+
+  create_table "departments", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "location"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "students", :force => true do |t|
     t.string   "name"
@@ -40,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20140116090849) do
     t.time     "fr_even_start"
     t.time     "fr_even_end"
     t.string   "color"
+    t.integer  "department_id"
   end
 
 end

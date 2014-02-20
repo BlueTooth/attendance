@@ -2,7 +2,10 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    if params[:department]
+      @students = Student.find(:all, :conditions => { :department_id => params[:department] })
+    end
+    @departments = Department.all
 
     respond_to do |format|
       format.html # index.html.erb
