@@ -2,9 +2,7 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    if params[:department]
-      @students = Student.find(:all, :conditions => { :department_id => params[:department] })
-    end
+    @students = params[:department] ? Student.find(:all, :conditions => { :department_id => params[:department] }) : Student.all
     @departments = Department.all
 
     respond_to do |format|
@@ -68,7 +66,7 @@ class StudentsController < ApplicationController
           render :edit
         }
         format.json { render :json => @student.errors, :status => :unprocessable_entity }
-      elsif @color = Student.find_by_color(params[:student][:color]) and @color.id != @student.id
+      elsif @color = Student.find_by_color_id(params[:student][:color_id]) and @color.id != @student.id
         format.html {
           flash[:notice] = 'Color exists at '+@color.name+'.'
           render :edit

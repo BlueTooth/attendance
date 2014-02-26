@@ -17,11 +17,11 @@
   </div>
   <div class="field">
     <%= f.label :color %><br />
-    <%= select_tag("student[color]", options_for_select([['DarkRed'], ['MediumVioletRed'], ['OrangeRed'], ['Gold'], ['DarkKhaki'], ['Fuchsia'], ['DarkViolet'], ['Indigo'], ['SeaGreen'], ['DarkGreen'], ['DarkOliveGreen'], ['Teal'], ['Navy'], ['Maroon'], ['DimGray'], ['Black']], @student.color)) %>
+    <%= select_tag("student[color_id]", options_from_collection_for_select(Color.find(:all), "id", "name", @student.color.id.to_i)) %>
   </div>
   <div class="field">
     <%= f.label "Abteilung" %><br />
-    <%= select_tag("student[department_id]", options_from_collection_for_select(Department.find(:all), "id", "name")) %>
+    <%= select_tag("student[department_id]", options_from_collection_for_select(Department.find(:all), "id", "name", @student.department.id.to_i)) %>
   </div>
 
   </br>
