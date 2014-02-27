@@ -4,11 +4,11 @@
 
 <%= form_tag("/students", method: "get") do %>
   <%= label_tag(:department, "Abteilung:") %>
-  <%= select_tag(:department, options_from_collection_for_select(@departments, "id", "name", params[:department].to_i)) %>
+  <%= select_tag(:department, options_from_collection_for_select(@departments, "id", "name", params[:department].to_i), include_blank: true) %>
   <%= submit_tag("Anzeigen") %>
 <% end %>
 
-<% if @students %>
+<% if @students.count > 0 %>
 
 <br />
 
@@ -108,7 +108,7 @@
   <% end %>
 </table>
 <% else %>
-  <p> Bitte eine Abteilung ausw&auml;hlen. </p>
+  <p> Bitte eine Abteilung ausw&auml;hle oder die Abteilung hat (noch) keine Studenten. </p>
 <% end %>
 <br />
 
