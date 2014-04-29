@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140226144611) do
+ActiveRecord::Schema.define(:version => 20140429131741) do
 
   create_table "colors", :force => true do |t|
     t.string   "name"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20140226144611) do
     t.time     "fr_even_end"
     t.integer  "department_id"
     t.integer  "color_id"
+    t.string   "salt"
   end
 
 end

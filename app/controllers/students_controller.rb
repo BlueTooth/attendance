@@ -1,6 +1,10 @@
+require 'digest/md5'
+
 class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
+  @@pepper = "TZEzöa=0^u23)v7'62376/&/$§ZGUtfjysä§%"
+
   def index
     @students = params[:department] ? Student.find(:all, :conditions => { :department_id => params[:department] }) : Student.all
     @departments = Department.all
@@ -43,6 +47,11 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(params[:student])
 
+    o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
+    @student.salt = (0...50).map { o[rand(o.length)] }.join
+    
+    @student.password = Digest::MD5.hexdigest( @@pepper + @student.password + @student.salt )
+
     respond_to do |format|
       if @student.save
         format.html { redirect_to @student, :notice => 'Student was successfully created.' }
@@ -60,7 +69,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
 
     respond_to do |format|
-      if @student.password != params[:student][:password]
+      if @student.password != Digest::MD5.hexdigest( @@pepper + params[:student][:password] + @student.salt ) and @student.password != params[:student][:password] 
         format.html { 
           flash[:notice] = 'Wrong password.'
           render :edit
